@@ -15,6 +15,7 @@ let distanceFromBottom;
 let pixel;
 let color;
 let rect;
+let resultV = 0;
 
 roach.onclick = function () {
   calcBody.style.left = "";
@@ -92,6 +93,7 @@ for (let i = 1; i < buttons.length - 1; i++) {
 buttons[0].onclick = function () {
   input.textContent = "";
   result.textContent = "results";
+  resultV = 0;
   inputCount = 0;
 };
 buttons[2].onclick = function () {
@@ -108,6 +110,7 @@ buttons[buttons.length - 1].onclick = function () {
 //====================== = 을 누르거나 엔터를 누르면 결과 나오게=============
 function showResult() {
   if (input.textContent != "") {
+    resultV = eval(input.textContent);
     result.textContent = input.textContent + " = " + eval(input.textContent);
     dot = false;
     input.textContent = "";
@@ -121,9 +124,20 @@ function addToInput(t) {
   const inputLast = input.textContent.slice(-1);
   if (keyCheckSym.test(t)) {
     console.log(inputLast);
-    if (keyCheckSym.test(inputLast) || inputLast == "(" || inputLast == "") {
+    if (inputLast == "") {
+      if (resultV != 0) {
+        input.textContent = resultV;
+      } else {
+        return;
+      }
+    } else if (
+      keyCheckSym.test(inputLast) ||
+      inputLast == "(" ||
+      inputLast == ""
+    ) {
       return;
     }
+
     dot = false;
   } else if (keyCheckNum.test(t)) {
     if (inputLast == ")") {
