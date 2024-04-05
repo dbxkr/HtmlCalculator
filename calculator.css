@@ -108,3 +108,28 @@
   font-weight: 400;
   font-style: bold;
 }
+.roach {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180px;
+  height: 120px;
+}
+.balloon {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 38%;
+  left: 47%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  border: solid black 1px;
+  width: 150px;
+  height: 80px;
+  border-radius: 1em;
+  font-family: "Hi Melody", sans-serif;
+  font-weight: bold;
+  font-style: bold;
+}

@@ -1,11 +1,55 @@
 let result = document.querySelector("#result_div");
 let buttons = document.querySelectorAll(".buttons div");
 let input = document.querySelector("#num_input");
-let keyCheckSym = /^[*\/+-]+$/;
+const calcBody = document.querySelector(".calc_body");
+const roach = document.querySelector(".return");
+let keyCheckSym = /^[*\/\%+-]+$/;
 let keyCheckNum = /^[0-9]+$/;
 let inputCount = 0;
 let bracket = 0;
 let dot = false;
+let isDown = false;
+let x, y;
+let distanceFromRight;
+let distanceFromBottom;
+let pixel;
+let color;
+let rect;
+
+roach.onclick = function () {
+  calcBody.style.left = "";
+  calcBody.style.top = "";
+};
+
+calcBody.onclick = function (e) {
+  if (isDown) {
+    isDown = false;
+    return;
+  }
+  (x = e.clientX), (y = e.clientY);
+  pixel = document.elementFromPoint(x, y);
+  color = window.getComputedStyle(pixel).backgroundColor;
+  if (color === "rgb(0, 0, 0)") {
+    // 검은색일 때
+    rect = calcBody.getBoundingClientRect();
+    x -= rect.left; //x position within the element.
+    y -= rect.top; //y position within the element.
+    if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+      isDown = true;
+    }
+  }
+};
+
+calcBody.onmousemove = function (e) {
+  if (isDown) {
+    calcBody.style.left = e.pageX + "px";
+    calcBody.style.top = e.pageY + 100 + "px";
+  }
+};
+
+// calcBody.onmouseup = function () {
+//   isDown = false;
+// };
 
 // ===================창 전체에 이벤트 리스너 달아주기.==================================
 window.addEventListener("keydown", function (event) {
