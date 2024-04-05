@@ -1,23 +1,35 @@
+/* 계산기 몸통. */
 .calc_body {
   position: absolute;
-  width: 300px;
-  height: 500px;
-  background-color: black;
-  border-radius: 1em;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  /* 화면 정 중앙에 오도록 하는 CSS */
+  /* 절대값 위치 지정 후 위랑 왼쪽에서 각각 50%씩 */
+  /* 그리고 박스의 가로 세로를 각각 -50% 방향으로 움직여서 중심점이 중앙에 오도록*/
+  width: 300px;
+  height: 500px;
+  background-color: black;
+  /* 크기 설정 */
+  border-radius: 1em;
+  /* 모서리 둥글게 */
   box-shadow: 0px 0px 12px 5px rgb(75, 74, 74);
+  /* 박스에 그림자 속성. 0,0 위치에 12px정도의 번짐, 5px정도의 크기로 */
 }
+
+/* 숫자랑 결과가 입력될 창. 회색으로 처리된 부분 .calc_body의 하위속성*/
 .num_area {
   width: 90%;
   height: 15%;
   margin-top: 5%;
   margin-left: auto;
   margin-right: auto;
+  /* 뭐 대충 중앙으로 오도록 조정함 */
   border-radius: 1em;
   background-color: gray;
 }
+
+/* 결과값이 나올 창, .num_area의 하위 속성 */
 #result_div {
   width: 99%;
   height: 35%;
@@ -27,10 +39,13 @@
   /* overflow-x: auto; */
   white-space: nowrap;
 }
+
+/* 유저가 숫자를 입력하면 반영해주는 창, .num_area의 하위 속성 */
 #num_input {
   text-align: right;
-  background-color: transparent;
+  /* background-color: transparent; */
   /* border: none; */
+  /* 위에 주석들은 원래는 textarea나 input을 썼던 흔적들 */
   resize: none;
   width: 100%;
   height: 60%;
@@ -42,6 +57,7 @@
 /* input:focus {
   outline: none;
 } */
+/* 버튼들 모아두는 공간 .calc_body의 하위속성 */
 .buttons {
   width: 90%;
   height: 72%;
@@ -50,11 +66,15 @@
   margin-right: auto;
   /* background-color: green; */
   border: transparent;
+  /*  */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   padding: 10px;
+  /* div를 4x5로 나눠서 자식 버튼들을 할당시켜줌 */
 }
+
+/* buttons의 바로 딸려있는 자식들 div에 대해 적용. 얘들이 버튼임 굳이 div로 한 이유는 왜그랬지 모르겠다*/
 .buttons div {
   /* box-shadow: 0px 0px 10px 5px gray; */
   display: flex;
